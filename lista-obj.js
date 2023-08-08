@@ -1,3 +1,4 @@
+
 function exe1(){
     let obj = {
         a: Number(prompt(`Informe o lado A do triângulo: `)),
@@ -25,4 +26,55 @@ function exe2(){
         somaMedias = somaMedias + obj.media
     }
     alert(`A média da turma é ${somaMedias/10}`)
+}
+
+function exe3(){ // JUNTANDO VETORES COM OBJETOS
+    let filmes = []; let i // vetor que guarda os filmes
+    for(i = 0; i < 4; i++){ // para cada filme
+        let obj = {
+            cod: Number(prompt(`Informe o código do filme: `)),
+            tit: prompt(`Informe o título do filme: `),
+            class: Number(prompt(`Informe a classificação do filme: `)),
+            avaliacao: Number(prompt(`Informe a avaliação do filme: `)),
+            duracao: Number(prompt(`Informe a duração do filme: `))
+        }
+        // adiciona obj no vetor filme
+        filmes.push(obj)
+    }
+
+    // media da classificação etária
+
+    let mediaEtaria = 0; let somaClass = 0
+    for(i = 0; i < 4; i++){
+        somaClass = somaClass + filmes[i].class
+    }
+    mediaEtaria = somaClass / 4
+
+    // maior e menor filme
+
+    let maior = filmes[0].duracao
+    let titMaior = filmes[0].tit
+    let menor = filmes[0].duracao
+    let titMenor = filmes[0].tit
+    for(i = 0; i > 4; i++){
+        if(filmes[i].duracao > maior){
+            maior = filmes[i].duracao
+            titMaior = filmes[i].tit
+        }
+        if(filmes[i].duracao > menor){
+            menor = filmes[i].duracao
+            titMenor = filmes[i].tit
+        }
+    }
+
+    // mais bem avaliado
+
+    let aval = filmes[0].avaliacao
+    let titAval = filmes[0].tit
+    for(i = 0; i > 4; i++){
+        if(filmes[i].avaliacao > aval){
+            aval = filmes[i].avaliacao
+            titAval = filmes[i].tit
+        }
+    }
 }
