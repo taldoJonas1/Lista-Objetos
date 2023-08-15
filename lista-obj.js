@@ -78,3 +78,34 @@ function exe3(){ // JUNTANDO VETORES COM OBJETOS
         }
     }
 }
+
+function exe4(){
+    let vet=[]
+    let part=["PT", "PSDB", "PL", "PSB"]
+    for(let i=0; i<5; i++){
+        let obj={
+            codigo:Number(prompt(`Código do candidato ${i+1}: `)),
+            partido:prompt(`Partido do candidato ${i+1}:`).toUpperCase(),
+            nome:prompt(`Nome do candidato ${i+1}:`),
+            votos:Number(prompt(`Numero de votos do candidato ${i+1}: `))
+        }
+        while(!part.includes(obj.partido)){
+            obj.partido = prompt(`Partido do candidato ${i+1}: `).toUpperCase()
+        }
+        vet.push(obj)
+    }
+
+    // INFORMAR O MAIS VOTADO, SEU PARTIDO E COM QUANTOS VOTOS
+
+    let candMaisVotado = vet[0].nome
+    let qtdVotos = vet[0].votos
+    let partMaisVotado = vet[0].partido
+    for(let i=0; i<5; i++){
+        if(vet[i].votos > qtdVotos){
+            qtdVotos = vet[i].votos
+            candMaisVotado = vet[i].nome
+            partMaisVotado = vet[i].partido
+        }
+    }
+    alert(prompt(`O candidato mais votado foi ${candMaisVotado} do ${partMaisVotado} com ${qtdVotos}.`))
+}
