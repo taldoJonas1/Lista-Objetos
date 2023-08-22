@@ -1,4 +1,4 @@
-function exe5(){
+function exeBikes(){
     let vet=[]
     let marcas=["CALOI", "SCOTT", "CANONDALE"]
 
