@@ -1,12 +1,27 @@
-function exFarmacia(){
+let exFarmacia = () => {
     let farmacia = []
     let remedio = []
+    let opcao
 
-    cadastroFarmacias(farmacia);
-    cadastroRemedios(remedio, farmacia);
-    vendaRemedios(remedio)
+    do{
+       opcao = Number(prompt('Escolha uma função: \n1. Cadastrar uma farmácia \n2. Cadastrar um remédio \n3. Fazer uma venda \n4. Sair'))
+       switch(opcao){
+        case 1: cadastroFarmacias(farmacia);
+            break
+        case 2: cadastroRemedios(remedio, farmacia);
+            break
+        case 3: vendaRemedios(remedio)
+            break
+        case 4: alert('O programa foi encerrado')
+            break
+        default: alert('Escolha uma das opções de 1 a 4')
+       } 
+    }while(opcao != 4)
+    
+    
+    
 
-    function cadastroFarmacias(farmacia){
+    let cadastroFarmacias = (farmacia) => {
         for(let i=0; i<5; i++){
             let objF = {
                 codigoF: Number(prompt(`Insira o código da farmácia ${i+1}`)),
@@ -20,7 +35,7 @@ function exFarmacia(){
         }
     }
 
-    function cadastroRemedios(remedio, farmacia){
+    let cadastroRemedios = (remedio, farmacia) => {
         for(let i=0; i<5; i++){
             let objR = {
                 codR: Number(prompt(`Insira o código do remédio ${i+1}`)),
@@ -35,7 +50,7 @@ function exFarmacia(){
         }
     }
 
-    function vendaRemedios(rem){
+    let vendaRemedios = (rem) => {
         for(let i=0; i<5; i++){
             let objV = {
                 codigoV: Number(prompt("Informe o código da farmácia: ")),
