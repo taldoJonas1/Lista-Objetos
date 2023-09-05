@@ -1,13 +1,28 @@
 function exeBikes(){
     let vet=[]
     let marcas=["CALOI", "SCOTT", "CANONDALE"]
+    let opcao
 
-    criarObj(vet, marcas);
-    mediaPrecos(vet);
-    bikeAntiga(vet);
-    bikesCaloi(vet);
-    aros29(vet);
-    quadroMaior(vet);
+    do{
+        opcao = Number(prompt('Escolha uma opção \n1. Cadastrar bike \n2. Calcular media dos preços \n 3. Bike mais antiga \n4. Bikes da Caloi \n5. Qtd de bikes aro 29 \n6. Bike com o maior quadro \n7. Sair'))
+        switch(opcao){
+            case 1: criarObj(vet, marcas);
+                break
+            case 2: mediaPrecos(vet);
+                break
+            case 3: bikeAntiga(vet);
+                break
+            case 4: bikesCaloi(vet);
+                break
+            case 5: aros29(vet);
+                break
+            case 6: quadroMaior(vet);
+                break
+            case 7: alert('O programa foi encerrado.')
+                break
+            default: alert('Opção inválida.')
+        }
+    }while(opcao != 7)
     
     function criarObj(vet, marcas){
         for(let i=0; i<10; i++){
@@ -33,7 +48,12 @@ function exeBikes(){
         for(let i=0; i<vet.length; i++){
             soma = soma + vet[i].preco
         }
-        alert(`A média de preço das bocicletas é ${soma/vet.length}`)
+        if(vet.length == 0){
+            alert('Não há bicicletas cadastradas.')
+        }
+        else{
+            alert(`A média de preço das bocicletas é ${soma/vet.length}`)
+        }
     }
     
     // bicicleta mais antiga
@@ -44,7 +64,12 @@ function exeBikes(){
                 maisAntiga = vet[i]
             }
         }
-        alert(`A bicicleta mais antiga é ${maisAntiga}`)
+        if(vet.length == 0){
+            alert('Não há bicicletas cadastradas.')
+        }
+        else{
+            alert(`A bicicleta mais antiga é ${maisAntiga}`)
+        }
     }
 
     // quais são da marca Caloi
@@ -55,7 +80,12 @@ function exeBikes(){
                 caloi.push(vet[i]) // adiciona no vetor
             }
         }
-        alert(`Bicicletas da marca Caloi: ${caloi}`)
+        if(vet.length == 0){
+            alert('Não há bicicletas cadastradas.')
+        }
+        else{
+            alert(`Bicicletas da marca Caloi: ${caloi}`)
+        }
     }
     
 
@@ -67,7 +97,12 @@ function exeBikes(){
                 aro29++
             }
         }
-        alert(`Quantidade de bicicletas com aro 29: ${aro29}`)
+        if(vet.length == 0){
+            alert('Não há bicicletas cadastradas.')
+        }
+        else{
+            alert(`Quantidade de bicicletas com aro 29: ${aro29}`)
+        }
     }
     
 
@@ -79,6 +114,11 @@ function exeBikes(){
                 maiorQuadro = vet[i].quadro
             }
         }
-        alert(`Bicicleta com o maior quadro: ${maiorQuadro}`)
+        if(vet.length == 0){
+            alert('Não há bicicletas cadastradas.')
+        }
+        else{
+            alert(`Bicicleta com o maior quadro: ${maiorQuadro}`)
+        }
     }
 }
