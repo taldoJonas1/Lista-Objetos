@@ -12,7 +12,7 @@ let exPoliticos = () => {
             break
         case 3: iniciarVotacao(vetPartidos, vetPoliticos)
             break
-        case 4: resultadoVotacao()
+        case 4: resultadoVotacao(vetPoliticos)
             break
         case 5: alert('O programa foi encerrado.')
             break
@@ -49,12 +49,16 @@ let exPoliticos = () => {
             for(let i = 0; i < n; i++){
                 let obj = {
                     codigo: Number(prompt(`Insira o código do partido que o candidato ${i+1} pertence.`)),
+                    sigla: prompt(`Insira a sigla do partido do candidato ${i+1}`),
                     nome: prompt(`Insira o nome do candidato ${i+1}.`).toUpperCase(),
                     qtd: 0,
                     cargo: prompt(`Insira o cargo do candidato ${i+1}.`).toUpperCase()
                 }
-                while(!vetPartidos.codigo.includes(obj.codigo)){
+                while(!partidos.codigo.includes(obj.codigo)){
                     obj.codigo = prompt(`Código inválido, digite um código já existente.`)
+                }
+                while(!partidos.sigla.includes(obj.sigla)){
+                    obj.sigla = prompt(`Sigla inválida, digite uma sigla já existente.`)
                 }
                 vet.push(obj)
             }
@@ -85,6 +89,35 @@ let exPoliticos = () => {
                 if(!achou){
                     alert('Código ou nome do candidato inválido.')
                 }
+            }
+        }
+    }
+
+    let resultadoVotacao = (politicos) => {
+        if(politicos.lenght == 0){
+            alert('Antes de exibir os resultados, adicione um candidato.')
+        }
+        else{
+            let maisVotos = politicos[0].qtd
+            let candMaisVotado = politicos[0].nome
+            let partMaisVotado = politicos[0].sigla
+            let cargoMaisVotado = politicos[0].cargo
+            for(let i = 0; i < politicos.lenght; i++){
+                if(politicos[i].qtd > maisVotos){
+                    candMaisVotado = politicos[i].nome
+                    partMaisVotado = politicos[i].sigla
+                    cargoMaisVotado = politicos[i].cargo
+                }
+            }
+            let escolha = prompt('Digite "S" se quiser exibir o resultado até então ou "N" se não quiser').toUpperCase()
+            if(escolha == 'S'){
+                alert(`Até então o candidato mais votado é o/a ${cargoMaisVotado} ${candMaisVotado} do ${partMaisVotado}.`)
+            }
+            else if(escolha == 'N'){
+                alert('Voltando para o menu principal.')
+            }
+            else{
+                alert('Opção inválida, voltando para o menu.')
             }
         }
     }
